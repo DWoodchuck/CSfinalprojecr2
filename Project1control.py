@@ -10,15 +10,16 @@ class Controller(QMainWindow,Ui_StudentTestGUI):
         self.Calculatorbutton.clicked.connect(lambda: self.calculate())
         self.Clearbutton.clicked.connect(lambda: self.clear())
 
+
     def calculate(self) -> None:
         """
-        Calculate the grades of students based on their scores.
+    Calculate the grades of students based on their scores.
 
-        This function takes the number of students and their scores as input,
-        and calculates the grade for each student based on their score and the max score in list grades.
+    This function takes the number of students and their scores as input,
+    and calculates the grade for each student based on their score and the max score in list grades.
 
-        Returns:None
-                """
+    Returns:None
+    """
         try:
             student = int(self.studentnuminput.text())
             number = (self.testscoresinput.text().split())
@@ -26,6 +27,8 @@ class Controller(QMainWindow,Ui_StudentTestGUI):
             for x in range(len(number)):
                 number2 = float(number[x])
                 grades.append(number2)
+            if student < len(grades):
+                grades = grades[:student]
             results = ""
             if student == len(grades):
                 for i in range(student):
@@ -54,6 +57,7 @@ class Controller(QMainWindow,Ui_StudentTestGUI):
         self.studentnuminput.setText("")
         self.testscoresinput.setText("")
         self.studentscoresprintlabel.setText("")
+
 
 
 
